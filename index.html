@@ -3,131 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Truffe en Détresse - Jeu de société au profit des associations animalières</title>
+    <title>Truffe en détresse - Jeu de société pour la protection animale</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Amatic+SC:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
         
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #fef6e4;
+            color: #172c66;
         }
         
-        .title-font {
-            font-family: 'Amatic SC', cursive;
+        .comic-font {
+            font-family: 'Comic Neue', cursive;
         }
         
         .hero-gradient {
             background: linear-gradient(135deg, #f3d2c1 0%, #fef6e4 100%);
         }
         
-        .animal-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .paw-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f3d2c1' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
-        .animal-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .game-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         
-        .countdown-box {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 16px;
+        .game-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .countdown-box {
+            background: linear-gradient(135deg, #8bd3dd 0%, #f3d2c1 100%);
         }
         
         .btn-primary {
-            background-color: #8bd3dd;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #67b9c5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-secondary {
             background-color: #f582ae;
             transition: all 0.3s ease;
         }
         
-        .btn-secondary:hover {
-            background-color: #e36b9a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .btn-primary:hover {
+            background-color: #f3a6c3;
+            transform: scale(1.05);
         }
         
-        .association-logo {
-            height: 80px;
-            width: auto;
-            object-fit: contain;
-            margin-bottom: 1rem;
-        }
-        
-        .game-photo {
-            border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transition: transform 0.3s ease;
-        }
-        
-        .game-photo:hover {
-            transform: scale(1.03);
-        }
-        
-        .contact-input {
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 0.75rem;
-            width: 100%;
-            transition: border-color 0.3s ease;
-        }
-        
-        .contact-input:focus {
-            outline: none;
-            border-color: #8bd3dd;
-            box-shadow: 0 0 0 3px rgba(139, 211, 221, 0.3);
+        .association-card {
+            border-left: 5px solid #f582ae;
         }
     </style>
 </head>
-<body>
+<body class="paw-bg">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/50x50" alt="Truffe en Détresse Logo" class="h-12 w-12 rounded-full">
-                    <span class="ml-3 text-xl font-bold text-gray-800 title-font">Truffe en Détresse</span>
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-paw text-3xl text-pink-500"></i>
+                    <span class="comic-font text-2xl font-bold text-gray-800">Truffe en détresse</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#histoire" class="text-gray-800 hover:text-pink-500">Notre Histoire</a>
-                    <a href="#jeu" class="text-gray-800 hover:text-pink-500">Le Jeu</a>
-                    <a href="#associations" class="text-gray-800 hover:text-pink-500">Nos Associations</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#story" class="text-gray-800 hover:text-pink-500">L'histoire</a>
+                    <a href="#mission" class="text-gray-800 hover:text-pink-500">Notre mission</a>
+                    <a href="#game" class="text-gray-800 hover:text-pink-500">Le jeu</a>
                     <a href="#contact" class="text-gray-800 hover:text-pink-500">Contact</a>
                 </div>
-                <div class="md:hidden">
-                    <button class="text-gray-800 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+                <a href="#crowdfunding" class="hidden md:block px-6 py-2 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition duration-300">
+                    Soutenez-nous !
+                </a>
+                <button class="md:hidden text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -136,281 +85,329 @@
     <section class="hero-gradient py-20">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 title-font">Truffe en Détresse</h1>
-                <p class="text-xl text-gray-700 mb-8">Un jeu de société qui réunit les familles tout en soutenant les associations animalières.</p>
+                <h1 class="comic-font text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+                    Sauvez les animaux <span class="text-pink-500">ensemble</span> !
+                </h1>
+                <p class="text-xl text-gray-700 mb-8">
+                    Un jeu de société passionnant qui sensibilise à la protection animale tout en s'amusant en famille ou entre amis.
+                </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#crowdfund" class="btn-primary text-white font-bold py-3 px-8 rounded-full text-center">Soutenir notre campagne</a>
-                    <a href="#video" class="btn-secondary text-white font-bold py-3 px-8 rounded-full text-center">Voir la bande-annonce</a>
+                    <a href="#crowdfunding" class="px-8 py-4 bg-pink-500 text-white rounded-full text-lg font-semibold text-center hover:bg-pink-600 transition duration-300">
+                        Participez à notre crowdfunding
+                    </a>
+                    <a href="#game" class="px-8 py-4 border-2 border-gray-800 text-gray-800 rounded-full text-lg font-semibold text-center hover:bg-gray-800 hover:text-white transition duration-300">
+                        Découvrir le jeu
+                    </a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <img src="https://placehold.co/500x400" alt="Truffe en Détresse Board Game" class="game-photo">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Jeu de société Truffe en détresse" class="rounded-lg shadow-xl w-full max-w-md transform rotate-2">
+                    <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-400 p-2 rounded-full mr-2">
+                                <i class="fas fa-star text-white"></i>
+                            </div>
+                            <span class="font-bold">2-6 joueurs</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Countdown Section -->
-    <section id="crowdfund" class="py-16 bg-pink-50">
+    <section id="crowdfunding" class="py-12 bg-gray-800 text-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Le financement participatif commence dans :</h2>
-            <div class="flex justify-center space-x-4 mb-10">
-                <div class="countdown-box py-4 px-6">
-                    <div class="text-4xl font-bold text-gray-800" id="days">00</div>
-                    <div class="text-gray-600">Jours</div>
-                </div>
-                <div class="countdown-box py-4 px-6">
-                    <div class="text-4xl font-bold text-gray-800" id="hours">00</div>
-                    <div class="text-gray-600">Heures</div>
-                </div>
-                <div class="countdown-box py-4 px-6">
-                    <div class="text-4xl font-bold text-gray-800" id="minutes">00</div>
-                    <div class="text-gray-600">Minutes</div>
-                </div>
-                <div class="countdown-box py-4 px-6">
-                    <div class="text-4xl font-bold text-gray-800" id="seconds">00</div>
-                    <div class="text-gray-600">Secondes</div>
+            <h2 class="comic-font text-4xl font-bold mb-6">Notre campagne de crowdfunding commence bientôt !</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Rejoignez notre aventure et aidez-nous à produire ce jeu qui soutient la cause animale.
+            </p>
+            
+            <div class="countdown-box max-w-2xl mx-auto p-8 rounded-lg mb-8">
+                <div class="flex justify-center space-x-4">
+                    <div class="text-center">
+                        <div class="text-5xl font-bold" id="days">00</div>
+                        <div class="text-lg">Jours</div>
+                    </div>
+                    <div class="text-5xl font-bold">:</div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold" id="hours">00</div>
+                        <div class="text-lg">Heures</div>
+                    </div>
+                    <div class="text-5xl font-bold">:</div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold" id="minutes">00</div>
+                        <div class="text-lg">Minutes</div>
+                    </div>
+                    <div class="text-5xl font-bold">:</div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold" id="seconds">00</div>
+                        <div class="text-lg">Secondes</div>
+                    </div>
                 </div>
             </div>
-            <p class="text-xl text-gray-700 mb-8">Soyez parmi les premiers à soutenir notre mission et bénéficiez de récompenses exclusives !</p>
-            <a href="#" class="btn-primary inline-block text-white font-bold py-3 px-8 rounded-full">Me prévenir au lancement</a>
+            
+            <a href="#" class="inline-block px-8 py-4 bg-pink-500 text-white rounded-full text-lg font-semibold hover:bg-pink-600 transition duration-300">
+                <i class="fas fa-bell mr-2"></i> M'avertir du lancement
+            </a>
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section id="video" class="py-20 bg-white">
+    <!-- Story Section -->
+    <section id="story" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Découvrez Truffe en Détresse</h2>
-            <div class="video-container max-w-4xl mx-auto">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80" alt="Chat Furie" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="comic-font text-4xl font-bold text-gray-800 mb-6">L'histoire de Furie</h2>
+                    <p class="text-lg text-gray-700 mb-4">
+                        Tout a commencé avec notre chat adoré, Furie, qui a mystérieusement disparu un jour d'hiver. Pendant sept longues années, nous avons gardé espoir, diffusé des avis de recherche et continué à croire en son retour.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4">
+                        Puis un miracle s'est produit : une bénévole de l'association "Truffes en détresse" a retrouvé Furie grâce à sa puce électronique. Cette rencontre extraordinaire et le dévouement des bénévoles nous ont inspiré à créer ce jeu.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        "Truffe en détresse" est notre façon de rendre hommage à tous ces héros anonymes qui œuvrent chaque jour pour retrouver et sauver les animaux perdus ou abandonnés.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Story Section -->
-    <section id="histoire" class="py-20 bg-gray-50">
+    <!-- Mission Section -->
+    <section id="mission" class="py-20 bg-gray-100">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 title-font">Notre Histoire</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="mb-12">
-                    <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">La disparition de Furie</h3>
-                            <p class="text-gray-600 mb-6">Il y a plusieurs années, Furie, notre petite chatte d'un an née à la maison, s'est perdue après notre déménagement. Nous l'avons cherchée chaque jour pendant plusieurs mois, avons affiché des flyers autour de notre nouveau domicile et de notre ancienne maison, mais nous ne l'avons jamais retrouvée.</p>
-                            <p class="text-gray-600">Avec le temps, nous avons dû nous faire à l'idée que nous ne la reverrions peut-être jamais, en espérant qu'elle avait trouvé une nouvelle famille où elle serait aimée.</p>
-                        </div>
-                        <div class="flex justify-center">
-                            <img src="https://placehold.co/400x300" alt="Chat perdu" class="game-photo">
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
-                        <div class="order-1 md:order-2">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">La merveilleuse nouvelle</h3>
-                            <p class="text-gray-600 mb-6">Sept ans plus tard, un samedi matin d'automne, mon téléphone a sonné. Sandrine, une bénévole de l'association Truffes en Détresse, m'a informé qu'elle avait retrouvé notre chatte.</p>
-                            <p class="text-gray-600">Elle vivait depuis sa fugue entre une cave et un balcon dans un quartier situé à trois kilomètres de notre domicile.</p>
-                        </div>
-                        <div class="order-2 md:order-1 flex justify-center">
-                            <img src="https://placehold.co/400x300" alt="Appel téléphonique" class="game-photo">
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Les retrouvailles</h3>
-                            <p class="text-gray-600 mb-6">L'émotion que nous avons ressentie en retrouvant notre chatte était indescriptible. Bien qu'elle ait beaucoup grandi et changé, nous avons immédiatement reconnu son regard. Elle semblait en bonne santé malgré les conditions de vie difficiles.</p>
-                            <p class="text-gray-600">Nous avons souri, nous avons pleuré, et nous l'avons ramenée à la maison.</p>
-                        </div>
-                        <div class="flex justify-center">
-                            <img src="https://placehold.co/400x300" alt="Retrouvailles avec le chat" class="game-photo">
-                        </div>
-                    </div>
-                </div>
+            <h2 class="comic-font text-4xl font-bold text-center text-gray-800 mb-16">Notre mission & valeurs</h2>
+            
+            <div class="max-w-4xl mx-auto mb-16">
+                <p class="text-xl text-center text-gray-700 mb-8">
+                    Nous nous engageons à reverser une partie des bénéfices du jeu à trois associations de protection animale :
+                </p>
                 
-                <div class="bg-pink-50 p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Le travail remarquable des bénévoles</h3>
-                    <p class="text-gray-600 mb-6">Le travail accompli par les bénévoles d'associations comme la vôtre est remarquable et inestimable. Sandrine a passé plusieurs jours à resocialiser Furie pour pouvoir l'approcher suffisamment et vérifier sa puce d'identification.</p>
-                    <p class="text-gray-600 mb-6">C'est grâce à sa patience et à son dévouement que nous avons pu retrouver Furie. Il a fallu du temps à Furie pour retrouver confiance en les humains car elle était terrifiée par nos mains et nos pieds.</p>
-                    <p class="text-gray-600">Aujourd'hui, après deux ans, elle vit heureuse et paisible avec sa famille de chats et sa famille humaine.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Association 1 -->
+                    <div class="association-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-wheelchair text-blue-500 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Suzi Handicap Animal</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Association spécialisée dans l'accueil et les soins des animaux handicapés. Ils leur offrent une seconde chance et un foyer adapté à leurs besoins spécifiques.
+                        </p>
+                    </div>
+                    
+                    <!-- Association 2 -->
+                    <div class="association-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-home text-green-500 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Refuge de l'Espoir</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Ce refuge recueille les animaux abandonnés et maltraités, leur prodiguant soins et affection en attendant de leur trouver une famille aimante.
+                        </p>
+                    </div>
+                    
+                    <!-- Association 3 -->
+                    <div class="association-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-utensils text-purple-500 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Pattes Solidaires</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Organisation qui vient en aide aux animaux des sans-abri et personnes en grande précarité, en fournissant nourriture et soins vétérinaires.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Nos engagements</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-start">
+                        <div class="bg-pink-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-leaf text-pink-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-1">Éco-conception</h4>
+                            <p class="text-gray-700 text-sm">Jeu fabriqué avec des matériaux durables et recyclables</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-hand-holding-heart text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-1">10% des bénéfices</h4>
+                            <p class="text-gray-700 text-sm">Reversés aux associations partenaires</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-users text-yellow-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-1">Équité</h4>
+                            <p class="text-gray-700 text-sm">Prix accessible pour soutenir la cause</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-book text-green-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-1">Pédagogie</h4>
+                            <p class="text-gray-700 text-sm">Sensibilisation des jeunes générations</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Game Section -->
-    <section id="jeu" class="py-20 bg-white">
+    <section id="game" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 title-font">Le Jeu</h2>
+            <h2 class="comic-font text-4xl font-bold text-center text-gray-800 mb-6">Découvrez le jeu</h2>
+            <p class="text-xl text-center text-gray-700 max-w-3xl mx-auto mb-16">
+                Un jeu coopératif où vous incarnez des bénévoles d'un refuge animalier. Ensemble, vous devez sauver, soigner et trouver des familles d'accueil pour les animaux en détresse.
+            </p>
             
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                    <img src="https://placehold.co/600x400" alt="Plateau de jeu" class="game-photo">
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Truffe en Détresse</h3>
-                    <p class="text-gray-600 mb-6">Un jeu de société coopératif pour 2 à 6 joueurs, âgés de 7 à 77 ans. Ensemble, aidez les animaux perdus à retrouver leur famille !</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <div class="bg-pink-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-paw text-pink-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Durée d'une partie</h4>
-                                <p class="text-gray-600">30 à 45 minutes</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="bg-pink-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-users text-pink-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Mode de jeu</h4>
-                                <p class="text-gray-600">Coopératif - Tous ensemble contre le jeu</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="bg-pink-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-graduation-cap text-pink-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Pédagogie</h4>
-                                <p class="text-gray-600">Sensibilisation à la protection animale</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">Comment jouer ?</h3>
             <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <div class="animal-card bg-white p-8 rounded-xl shadow-md text-center">
-                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-search text-blue-500 text-3xl"></i>
+                <!-- Card 1 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-users text-blue-500 text-6xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">1. Recherche</h3>
-                    <p class="text-gray-600">Parcourez le plateau pour localiser les animaux perdus en suivant les indices.</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">2 à 6 joueurs</h3>
+                        <p class="text-gray-700">
+                            Jouez en famille ou entre amis. Le jeu s'adapte au nombre de participants pour une expérience toujours optimale.
+                        </p>
+                    </div>
                 </div>
-                <div class="animal-card bg-white p-8 rounded-xl shadow-md text-center">
-                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-heart text-green-500 text-3xl"></i>
+                
+                <!-- Card 2 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-child text-green-500 text-6xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">2. Soins</h3>
-                    <p class="text-gray-600">Apportez les soins nécessaires aux animaux trouvés avant de pouvoir les ramener à leur famille.</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">7 à 77 ans</h3>
+                        <p class="text-gray-700">
+                            Des règles simples mais des défis stimulants pour tous les âges. Un jeu intergénérationnel parfait.
+                        </p>
+                    </div>
                 </div>
-                <div class="animal-card bg-white p-8 rounded-xl shadow-md text-center">
-                    <div class="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-home text-yellow-500 text-3xl"></i>
+                
+                <!-- Card 3 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-pink-100 flex items-center justify-center">
+                        <i class="fas fa-heart text-pink-500 text-6xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">3. Retour</h3>
-                    <p class="text-gray-600">Retrouvez la famille de chaque animal grâce aux indices et aux puces d'identification.</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Valeurs éducatives</h3>
+                        <p class="text-gray-700">
+                            Développe l'empathie, le travail d'équipe et sensibilise aux défis des refuges animaliers.
+                        </p>
+                    </div>
                 </div>
             </div>
             
-            <div class="bg-gray-50 p-8 rounded-xl">
-                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Contenu de la boîte</h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <div class="bg-white p-4 rounded-lg shadow-sm mb-2">
-                            <i class="fas fa-chess-board text-4xl text-gray-700"></i>
-                        </div>
-                        <p class="text-gray-600">1 plateau de jeu</p>
+            <!-- Video Section -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Présentation vidéo du jeu</h3>
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                    <div class="w-full h-96 bg-gray-300 flex items-center justify-center">
+                        <i class="fas fa-play-circle text-6xl text-gray-600"></i>
                     </div>
-                    <div class="text-center">
-                        <div class="bg-white p-4 rounded-lg shadow-sm mb-2">
-                            <i class="fas fa-id-card text-4xl text-gray-700"></i>
-                        </div>
-                        <p class="text-gray-600">36 cartes animaux</p>
+                </div>
+            </div>
+            
+            <!-- Game Components -->
+            <div class="max-w-5xl mx-auto">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">Contenu du jeu</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-dice mr-3 text-yellow-500"></i> Éléments de jeu
+                        </h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>1 plateau de jeu magnifiquement illustré</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>6 pions bénévoles personnalisables</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>42 cartes "Animal" avec de vraies histoires</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>24 cartes "Mission" pour des défis variés</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>1 dé spécial et des jetons ressources</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="text-center">
-                        <div class="bg-white p-4 rounded-lg shadow-sm mb-2">
-                            <i class="fas fa-question text-4xl text-gray-700"></i>
-                        </div>
-                        <p class="text-gray-600">24 cartes défis</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-white p-4 rounded-lg shadow-sm mb-2">
-                            <i class="fas fa-cube text-4xl text-gray-700"></i>
-                        </div>
-                        <p class="text-gray-600">6 pions joueurs</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-trophy mr-3 text-blue-500"></i> Comment jouer ?
+                        </h4>
+                        <p class="mb-4">
+                            Les joueurs coopèrent pour accomplir des missions : recueillir des animaux, leur trouver des familles d'accueil, collecter des fonds pour le refuge.
+                        </p>
+                        <p>
+                            Chaque partie est différente grâce aux cartes aléatoires et aux choix stratégiques de l'équipe. Le but : sauver le plus d'animaux possible avant que le temps ne s'écoule !
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Associations Section -->
-    <section id="associations" class="py-20 bg-gray-50">
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4 title-font">Nos Associations Partenaires</h2>
-            <p class="text-xl text-center text-gray-600 mb-12">10% de tous les bénéfices seront répartis également entre ces organisations extraordinaires</p>
+            <h2 class="comic-font text-4xl font-bold text-center text-gray-800 mb-12">Galerie photos</h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Association 1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animal-card">
-                    <div class="p-6 text-center">
-                        <img src="https://placehold.co/150x150" alt="Suzihandicapanimal" class="association-logo mx-auto">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Suzihandicapanimal</h3>
-                        <p class="text-gray-600 mb-4">Association dédiée aux animaux handicapés, offrant des soins spécialisés et trouvant des foyers adaptés à leurs besoins particuliers.</p>
-                        <div class="flex justify-center items-center text-yellow-500 mb-4">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <a href="#" class="text-pink-500 font-semibold hover:underline">En savoir plus →</a>
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Jeu de société" class="w-full h-full object-cover">
                 </div>
-                
-                <!-- Association 2 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animal-card">
-                    <div class="p-6 text-center">
-                        <img src="https://placehold.co/150x150" alt="Asso 2" class="association-logo mx-auto">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Refuge de l'Espoir</h3>
-                        <p class="text-gray-600 mb-4">Spécialisé dans le sauvetage des animaux abandonnés et maltraités, avec un programme de réhabilitation comportementale unique.</p>
-                        <div class="flex justify-center items-center text-yellow-500 mb-4">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="text-pink-500 font-semibold hover:underline">En savoir plus →</a>
-                    </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1143&q=80" alt="Chat" class="w-full h-full object-cover">
                 </div>
-                
-                <!-- Association 3 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animal-card">
-                    <div class="p-6 text-center">
-                        <img src="https://placehold.co/150x150" alt="Asso 3" class="association-logo mx-auto">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pattes Solidaires</h3>
-                        <p class="text-gray-600 mb-4">Œuvrant pour la stérilisation des chats errants et la sensibilisation dans les écoles à la protection animale.</p>
-                        <div class="flex justify-center items-center text-yellow-500 mb-4">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <a href="#" class="text-pink-500 font-semibold hover:underline">En savoir plus →</a>
-                    </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Chaton" class="w-full h-full object-cover">
                 </div>
-            </div>
-            
-            <div class="mt-16 bg-white p-8 rounded-xl shadow-md max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Comment fonctionne notre soutien ?</h3>
-                <div class="grid md:grid-cols-3 gap-6 text-center">
-                    <div>
-                        <div class="text-4xl font-bold text-pink-500 mb-2">1€</div>
-                        <div class="text-gray-600">par jeu vendu</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold text-pink-500 mb-2">3</div>
-                        <div class="text-gray-600">associations soutenues</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold text-pink-500 mb-2">100%</div>
-                        <div class="text-gray-600">des dons reversés</div>
-                    </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Chien" class="w-full h-full object-cover">
+                </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1588943211346-0905a1b2e103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Plateau de jeu" class="w-full h-full object-cover">
+                </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80" alt="Chien heureux" class="w-full h-full object-cover">
+                </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1514984879728-be0aff75a9e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" alt="Famille jouant" class="w-full h-full object-cover">
+                </div>
+                <div class="h-48 bg-gray-300 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Chiot" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -419,108 +416,140 @@
     <!-- Testimonials -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 title-font">Ce qu'ils en disent</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <h2 class="comic-font text-4xl font-bold text-center text-gray-800 mb-16">Ce qu'ils en disent</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Testimonial 1 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                <div class="bg-gray-100 p-8 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/50x50" alt="Marie L." class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800">Marie L.</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-600">"Mes enfants adorent ce jeu et ont beaucoup appris sur la protection animale. Une belle initiative qui allie plaisir et sensibilisation."</p>
+                    <p class="text-gray-700 italic mb-6">
+                        "Un jeu qui a ému toute la famille. Mes enfants ont enfin compris pourquoi il faut pucer nos animaux de compagnie. On adore y jouer le weekend !"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophie D." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sophie D.</h4>
+                            <p class="text-gray-600 text-sm">Maman de 2 enfants</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                <div class="bg-gray-100 p-8 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/50x50" alt="Pierre M." class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800">Pierre M.</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-600">"En tant que bénévole dans un refuge, je trouve ce jeu très réaliste dans sa représentation de notre travail. Bravo pour ce projet solidaire !"</p>
+                    <p class="text-gray-700 italic mb-6">
+                        "En tant que bénévole dans un refuge, je trouve ce jeu très réaliste dans sa représentation de notre quotidien. Une belle initiative pour notre cause !"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Pierre L." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Pierre L.</h4>
+                            <p class="text-gray-600 text-sm">Bénévole animalier</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                <div class="bg-gray-100 p-8 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/50x50" alt="Sophie T." class="w-12 h-12 rounded-full mr-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">
+                        "Les règles sont simples à comprendre mais le jeu reste stratégique. Parfait pour nos soirées entre amis, avec en plus une belle cause derrière."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Élodie T." class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-bold text-gray-800">Sophie T.</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                            <h4 class="font-bold text-gray-800">Élodie T.</h4>
+                            <p class="text-gray-600 text-sm">Joueuse passionnée</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-pink-500 p-12 text-white">
+                        <h2 class="comic-font text-3xl font-bold mb-6">Restons en contact</h2>
+                        <p class="mb-8">
+                            Inscrivez-vous à notre newsletter pour recevoir des nouvelles du jeu, des histoires d'animaux sauvés et être informé du lancement de notre campagne de crowdfunding.
+                        </p>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-envelope text-2xl mr-4"></i>
+                            <span>contact@truffe-en-detresse.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt text-2xl mr-4"></i>
+                            <span>+33 6 12 34 56 78</span>
+                        </div>
+                        <div class="mt-8">
+                            <h3 class="font-bold mb-4">Suivez-nous</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-white text-pink-500 p-2 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-white text-pink-500 p-2 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-white text-pink-500 p-2 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"Après avoir joué, mes enfants veulent adopter un animal et soutenir les refuges. Un jeu qui éveille les consciences tout en amusant."</p>
+                    <div class="md:w-1/2 p-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Envoyez-nous un message</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Votre nom</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Votre email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Votre message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="newsletter" class="mr-2">
+                                <label for="newsletter" class="text-gray-700">Je souhaite recevoir la newsletter</label>
+                            </div>
+                            <button type="submit" class="w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition duration-300">
+                                Envoyer
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section id="contact" class="py-20 bg-pink-50">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2 title-font">Restons en contact</h2>
-            <p class="text-xl text-center text-gray-600 mb-12">Inscrivez-vous à notre newsletter pour suivre l'avancée du projet</p>
-            
-            <form id="newsletter-form" class="bg-white p-8 rounded-xl shadow-md">
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label for="firstname" class="block text-gray-700 mb-2">Prénom</label>
-                        <input type="text" id="firstname" name="firstname" class="contact-input" required>
-                    </div>
-                    <div>
-                        <label for="lastname" class="block text-gray-700 mb-2">Nom</label>
-                        <input type="text" id="lastname" name="lastname" class="contact-input" required>
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block text-gray-700 mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="contact-input" required>
-                </div>
-                <div class="mb-6">
-                    <label class="flex items-center">
-                        <input type="checkbox" name="consent" class="rounded text-pink-500" required>
-                        <span class="ml-2 text-gray-700">J'accepte de recevoir des emails concernant Truffe en Détresse</span>
-                    </label>
-                </div>
-                <button type="submit" class="btn-primary w-full text-white font-bold py-3 px-8 rounded-full">S'inscrire</button>
-            </form>
-            
-            <div id="form-success" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
-                <strong class="font-bold">Merci !</strong>
-                <span class="block sm:inline">Vous êtes maintenant inscrit à notre newsletter.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-20 bg-pink-500 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6 title-font">Prêt à jouer et aider les animaux ?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Rejoignez notre campagne de financement participatif et soyez parmi les premiers à découvrir Truffe en Détresse tout en soutenant les associations animalières.</p>
-            <a href="#" class="inline-block bg-white text-pink-500 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300">Soutenir maintenant</a>
         </div>
     </section>
 
@@ -529,39 +558,46 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4 title-font">Truffe en Détresse</h3>
-                    <p class="text-gray-400">Un jeu qui fait la différence.</p>
-                    <div class="flex space-x-4 mt-6">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-paw text-3xl text-pink-500 mr-2"></i>
+                        <span class="comic-font text-2xl font-bold">Truffe en détresse</span>
                     </div>
+                    <p class="text-gray-400">
+                        Un jeu qui fait la différence pour les animaux en détresse.
+                    </p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Liens rapides</h3>
+                    <h4 class="text-lg font-bold mb-4">Liens utiles</h4>
                     <ul class="space-y-2">
-                        <li><a href="#histoire" class="text-gray-400 hover:text-white">Notre Histoire</a></li>
-                        <li><a href="#jeu" class="text-gray-400 hover:text-white">Le Jeu</a></li>
-                        <li><a href="#associations" class="text-gray-400 hover:text-white">Nos Associations</a></li>
+                        <li><a href="#story" class="text-gray-400 hover:text-white">Notre histoire</a></li>
+                        <li><a href="#mission" class="text-gray-400 hover:text-white">Notre mission</a></li>
+                        <li><a href="#game" class="text-gray-400 hover:text-white">Le jeu</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <h4 class="text-lg font-bold mb-4">Associations</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Nous contacter</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Livraison</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Suzi Handicap Animal</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Refuge de l'Espoir</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pattes Solidaires</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Informations</h3>
-                    <p class="text-gray-400 mb-2">Le financement participatif débutera le 15 octobre 2023</p>
-                    <p class="text-gray-400">Livraison prévue pour avril 2024</p>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">
+                        Abonnez-vous pour suivre notre aventure.
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l-lg w-full text-gray-800 focus:outline-none">
+                        <button class="bg-pink-500 px-4 rounded-r-lg hover:bg-pink-600">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-                <p>© 2023 Truffe en Détresse. Tous droits réservés.</p>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 Truffe en détresse. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -569,40 +605,45 @@
     <script>
         // Countdown Timer
         function updateCountdown() {
-            // Set the date we're counting down to (replace with your launch date)
-            const countDownDate = new Date("Oct 15, 2023 00:00:00").getTime();
+            const now = new Date();
+            const launchDate = new Date('2023-12-01T00:00:00'); // Set your launch date here
             
-            // Get today's date and time
-            const now = new Date().getTime();
+            const diff = launchDate - now;
             
-            // Find the distance between now and the count down date
-            const distance = countDownDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
             
-            // Time calculations for days, hours, minutes and seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Display the result
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-            
-            // If the count down is finished, write some text
-            if (distance < 0) {
-                clearInterval(countdownTimer);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-            }
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
         
-        // Update the count down every 1 second
+        setInterval(updateCountdown, 1000);
         updateCountdown();
-        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const newsletter = document.getElementById('newsletter').checked;
+            
+            // Here you would typically send this data to a server
+            console.log({
+                name,
+                email,
+                message,
+                newsletter
+            });
+            
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+            document.getElementById('contactForm').reset();
+        });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -613,27 +654,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-        
-        // Newsletter form submission
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the data to your server
-            // For this example, we'll just show a success message
-            
-            // Hide form
-            this.style.display = 'none';
-            
-            // Show success message
-            document.getElementById('form-success').classList.remove('hidden');
-            
-            // Reset form after 5 seconds (for demo purposes)
-            setTimeout(() => {
-                this.reset();
-                this.style.display = 'block';
-                document.getElementById('form-success').classList.add('hidden');
-            }, 5000);
         });
     </script>
 </body>
