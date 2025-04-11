@@ -9,7 +9,7 @@ Ce site présente notre histoire, le jeu, nos associations partenaires et permet
 
 Ce projet est hébergé gratuitement via **GitHub Pages**.
 
-🔗 Site en ligne : [https://l-cast.github.io/truffeendetresse/](https://TON_PSEUDO.github.io/truffeendetresse/)
+🔗 Site en ligne : [https://l-cast.github.io/truffeendetresse/](https://l-cast.github.io/truffeendetresse/)
 
 ---
 
