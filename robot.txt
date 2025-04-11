@@ -1,0 +1,22 @@
+# Bloquer l'accès aux images pour tous les robots bienveillants
+User-agent: *
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.png$
+Disallow: /*.gif$
+
+# Interdire certains robots spécifiques
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
